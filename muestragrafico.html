@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hito 1</title>
+  <script type="text/javascript" src="jquery/jquery-2.2.3.js"></script>
+  <script type="text/javascript" src="bootstrap-3.3.6-dist\js\bootstrap.js"></script>
+  <script type="text/javascript" src="assets/script/jquery.canvasjs.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="bootstrap-3.3.6-dist\css\bootstrap.min.css">
+  <link rel="stylesheet"  href="centro.css">
+</head>
+<body>
+
+<div class="container theme-showcase" role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Análisis de competencias en el tiempo.</h1>
+        <hr>
+        <div class="row">
+          <div class="list-group">
+            <div class="list-group-item active">Grafica entre fechas de competencias</div>
+            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+<script type="text/javascript">
+window.onload = function () {
+  var chart = new CanvasJS.Chart("chartContainer",
+  {
+    title:{
+      text: "grafico del desempeño de las competencias",
+      fontFamily: "Impact",
+      fontWeight: "normal"
+    },
+
+    legend:{
+      verticalAlign: "bottom",
+      horizontalAlign: "center"
+    },
+    data: [
+    {
+      //startAngle: 45,
+      indexLabelFontSize: 20,
+      indexLabelFontFamily: "Garamond",
+      indexLabelFontColor: "darkgrey",
+      indexLabelLineColor: "darkgrey",
+      indexLabelPlacement: "outside",
+      type: "doughnut",
+      showInLegend: true,
+      dataPoints: [
+        {  y: 53.37, legendText:"competencia 53%", indexLabel: "competencia 53%" },
+        {  y: 35.0, legendText:"competencia 2 35%", indexLabel: "competencia 2 35%" },
+        {  y: 7, legendText:"competencia 3 7%", indexLabel: "competencia 3 7%" },
+        {  y: 2, legendText:"competencia 4 2%", indexLabel: "competencia 4 2%" },
+        {  y: 5, legendText:"competencia 5 5%", indexLabel: "competencia 5 5%" }
+      ]
+    }
+    ]
+  });
+
+  chart.render();
+}
+</script>
+
+            
+            <div class="list-group-item"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</body>
+</html> 

@@ -1,0 +1,186 @@
+barrra
+
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<title>CanvasJS Chart jQuery Plugin</title>
+<script type="text/javascript" src="/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/script/jquery.canvasjs.min.js"></script>
+<script type="text/javascript">
+window.onload = function () {
+
+//Better to construct options first and then pass it as a parameter
+	var options = {
+		title: {
+			text: "Column Chart using jQuery Plugin"
+		},
+                animationEnabled: true,
+		data: [
+		{
+			type: "column", //change it to line, area, bar, pie, etc
+			dataPoints: [
+				{ x: 10, y: 10 },
+				{ x: 20, y: 11 },
+				{ x: 30, y: 14 },
+				{ x: 40, y: 16 },
+				{ x: 50, y: 19 },
+				{ x: 60, y: 15 },
+				{ x: 70, y: 12 },
+				{ x: 80, y: 10 }
+			]
+		}
+		]
+	};
+
+	$("#chartContainer").CanvasJSChart(options);
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+</body>
+
+</html>
+
+
+linea
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<script type="text/javascript">
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer",
+	{
+		animationEnabled: true,
+		title:{
+			text: "Multi Series Spline Chart - Hide / Unhide via Legend"
+		},
+		data: [
+		{
+			type: "spline", //change type to bar, line, area, pie, etc
+			showInLegend: true,        
+			dataPoints: [
+				{ x: 10, y: 51 },
+				{ x: 20, y: 45},
+				{ x: 30, y: 50 },
+				{ x: 40, y: 62 },
+				{ x: 50, y: 95 },
+				{ x: 60, y: 66 },
+				{ x: 70, y: 24 },
+				{ x: 80, y: 32 },
+				{ x: 90, y: 16}
+			]
+			},
+			{
+			type: "spline",
+			showInLegend: true,        
+			dataPoints: [
+				{ x: 10, y: 21 },
+				{ x: 20, y: 44},
+				{ x: 30, y: 35 },
+				{ x: 40, y: 45 },
+				{ x: 50, y: 75 },
+				{ x: 60, y: 58 },
+				{ x: 70, y: 18 },
+				{ x: 80, y: 30 },
+				{ x: 90, y: 11}
+			]
+			}
+		],
+		legend: {
+			cursor: "pointer",
+			itemclick: function (e) {
+				if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+					e.dataSeries.visible = false;
+				} else {
+					e.dataSeries.visible = true;
+			}
+			chart.render();
+			}
+		}
+	});
+
+	chart.render();
+}
+</script>
+<script type="text/javascript" src="/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+</body>
+
+</html>
+
+
+
+linea con fecha
+
+<!DOCTYPE HTML>
+<html>
+
+<head>  
+<script type="text/javascript">
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer",
+	{
+		zoomEnabled: true,      
+		title:{
+			text: "X Axis Labels adapt automatically on Zooming" 
+		},
+		axisX :{
+			labelAngle: -30
+		},
+		axisY :{
+			includeZero: false
+		},
+		legend: {
+			horizontalAlign: "right",
+			verticalAlign: "center"        
+		},
+		data: data,  // random generator below
+	});
+	chart.render();
+}
+
+var limit = 10000;    //increase number of dataPoints by increasing this
+
+var y = 0;
+var data = []; var dataSeries = { type: "line" };
+var dataPoints = [];
+for (var i = -limit/2; i <= limit/2; i++) {
+
+	y += (Math.random() * 10 - 5);
+	dateTime = new Date(2000, 2, 15);
+
+	//dateTime.setMilliseconds(dateTime.getMilliseconds() + i);
+	//dateTime.setSeconds(dateTime.getSeconds() + i);
+	//dateTime.setMinutes(dateTime.getMinutes() + i);
+	//dateTime.setHours(dateTime.getHours() + i);
+	dateTime.setDate(dateTime.getDate() + i);
+	//dateTime.setMonth(dateTime.getMonth() + i);
+	//dateTime.setFullYear(dateTime.getFullYear() + i);
+
+	dataPoints.push({         
+		x: dateTime,
+		y: y
+	});
+}
+
+dataSeries.dataPoints = dataPoints;
+data.push(dataSeries);               
+
+</script>
+<script type="text/javascript" src="/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;">
+</div>
+</body>
+
+
+</html>
