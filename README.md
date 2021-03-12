@@ -9,7 +9,9 @@ cualquier navegador del 2016 en adelante (no está probado en Internet Explorer)
 
 ## uso
 
-* Como es html sin servidores, sólo debe abrir index.html.
+* Al ser únicamente archivos .html, sólo deben abrir desde el explorador de archivos o usar un servidor virtual como Live Server de Visual Studio Code.
+
+Para iniciar la aplicación, se debe iniciar desde "intex.html"
 ```
 index.html
 ```
